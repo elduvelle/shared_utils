@@ -3,7 +3,11 @@
 % current folder, to be used with 'load_editor_state' (when reopening
 % Matlab)
 
-function save_editor_state()
+function save_editor_state(ed_status_fn)
+
+    if ~exist('ed_status_fn', 'var')
+        ed_status_fn = 'editor_status.mat';
+    end
 
     editor_status = {};
     % Save name of all open files in the current session
@@ -14,8 +18,8 @@ function save_editor_state()
     editor_status.active_file = matlab.desktop.editor.getActiveFilename;
     
     % Save this in the current folder
-    save('editor_status', 'editor_status')
-    disp(['Saved current editor status in: ' pwd '\' 'editor_status.mat'])
+    save(ed_status_fn, 'editor_status')
+    disp(['Saved current editor status in: ' pwd '\' ed_status_fn '.mat'])
 end
 
 
