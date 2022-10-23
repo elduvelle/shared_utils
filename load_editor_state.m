@@ -18,7 +18,7 @@ function load_editor_state(start_fresh)
     
         if start_fresh
             % As a backup before closing open files, save the current filelist
-            save_editor_state('ed_status_fn_backup')
+            save_editor_state('editor_status_backup')
             
             % Start by closing already open files
             close(matlab.desktop.editor.getAll)
