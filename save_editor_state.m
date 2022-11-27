@@ -6,7 +6,7 @@
 function save_editor_state(ed_status_fn)
 
     if ~exist('ed_status_fn', 'var')
-        ed_status_fn = 'editor_status.mat';
+        ed_status_fn = 'editor_status';
     end
 
     editor_status = {};
