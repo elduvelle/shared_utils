@@ -18,6 +18,12 @@ function save_editor_state(ed_status_fn)
     editor_status.active_file = matlab.desktop.editor.getActiveFilename;
     
     % Save this in the current folder
+    
+    if exist([ed_status_fn '.mat'], 'file')
+        %'backup' the previous editor status
+        new_fn = [ed_status_fn '_old.mat'];
+        movefile([ed_status_fn '.mat'], new_fn);
+    end
     save(ed_status_fn, 'editor_status')
     disp(['Saved current editor status in: ' pwd '\' ed_status_fn '.mat'])
 end
