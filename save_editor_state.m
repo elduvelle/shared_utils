@@ -19,7 +19,7 @@ function save_editor_state(ed_status_fn)
     
     % Save this in the current folder
     save(ed_status_fn, 'editor_status')
-    disp(['Saved current editor status in: ' pwd '\' ed_status_fn '.mat'])
+    disp(['Saved current editor status in: ' pwd '\' ed_status_fn])
 end
 
 
