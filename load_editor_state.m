@@ -9,11 +9,14 @@ function load_editor_state(start_fresh)
         % if start_fresh is 1: will close all existing files and only open
         % the saved ones
     end
+    cur_dir = pwd(); % this is where the file will be found!
+
     
     % Load the editor status file
     ed_fn = 'editor_status.mat';
-    if isfile(ed_fn)
-        editor_status = load(ed_fn);
+    full_ed_fn = [cur_dir filesep ed_fn];
+    if isfile(full_ed_fn)
+        editor_status = load(full_ed_fn);
         editor_status = editor_status.editor_status;
     
         if start_fresh

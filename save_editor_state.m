@@ -8,6 +8,7 @@ function save_editor_state(ed_status_fn)
     if ~exist('ed_status_fn', 'var')
         ed_status_fn = 'editor_status';
     end
+    cur_dir = pwd(); % this is where the file will be saved!
 
     editor_status = {};
     % Save name of all open files in the current session
@@ -19,13 +20,13 @@ function save_editor_state(ed_status_fn)
     
     % Save this in the current folder
     
-    if exist([ed_status_fn '.mat'], 'file')
+    if exist([cur_dir filesep ed_status_fn '.mat'], 'file')
         %'backup' the previous editor status
-        new_fn = [ed_status_fn '_old.mat'];
-        movefile([ed_status_fn '.mat'], new_fn);
+        new_fn = [cur_dir filesep ed_status_fn '_old.mat'];
+        movefile([cur_dir filesep ed_status_fn '.mat'], new_fn);
     end
-    save(ed_status_fn, 'editor_status')
-    disp(['Saved current editor status in: ' pwd '\' ed_status_fn])
+    save([cur_dir filesep ed_status_fn], 'editor_status')
+    disp(['Saved current editor status in: ' cur_dir filesep ed_status_fn])
 end
 
 
